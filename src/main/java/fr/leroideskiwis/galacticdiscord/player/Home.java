@@ -1,6 +1,7 @@
 package fr.leroideskiwis.galacticdiscord.player;
 
 import fr.leroideskiwis.galacticdiscord.Location;
+import fr.leroideskiwis.galacticdiscord.WorldEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,13 @@ import java.util.stream.Collectors;
 /**
  * Represents the player's home
  */
-public class Home {
+public class Home extends WorldEntity {
 
-    private Location location;
     private final List<HomeBuilding> buildings = new ArrayList<>();
     private final Player player;
 
     public Home(Location location, Player player) {
-        this.location = location;
+        super(location);
         this.player = player;
     }
 
