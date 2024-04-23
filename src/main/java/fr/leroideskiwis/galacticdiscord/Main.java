@@ -1,11 +1,8 @@
 package fr.leroideskiwis.galacticdiscord;
 
-import fr.leroideskiwis.galacticdiscord.database.ConnectionData;
-import fr.leroideskiwis.galacticdiscord.database.ConnectionDataBuilder;
 import fr.leroideskiwis.galacticdiscord.database.Database;
-import fr.leroideskiwis.galacticdiscord.listeners.InteractionsListener;
-import fr.leroideskiwis.galacticdiscord.listeners.TestListener;
-import net.dv8tion.jda.api.AccountType;
+import fr.leroideskiwis.galacticdiscord.interactions.Interactions;
+import fr.leroideskiwis.galacticdiscord.listeners.MessageListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -17,6 +14,7 @@ public class Main {
 
     private final JDA jda;
     private Database database;
+    private Interactions interactions = new Interactions();
 
     public Main(String token) {
         //TODO json file
@@ -28,8 +26,7 @@ public class Main {
                 .build()
         );*/
         this.jda = JDABuilder.createDefault(token).enableIntents(GatewayIntent.MESSAGE_CONTENT).build();
-        jda.addEventListener(new InteractionsListener(jda));
-        jda.addEventListener(new TestListener(jda));
+        jda.addEventListener(new MessageListener(jda, interactions));
     }
 
     public static void main(String... args) throws LoginException, SQLException {
