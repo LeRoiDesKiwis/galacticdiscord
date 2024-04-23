@@ -21,6 +21,10 @@ public abstract class ReactionInteraction extends BasicInteraction{
         this.emotes = emotes;
     }
 
+    /**
+     * Add the emotes to the message
+     * @param message The message
+     */
     public void applyEmotes(Message message){
         emotes.forEach(emote -> message.addReaction(Emoji.fromFormatted(emote)).queue());
     }

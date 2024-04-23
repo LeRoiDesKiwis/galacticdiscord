@@ -5,6 +5,9 @@ import fr.leroideskiwis.galacticdiscord.player.Home;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Represents a location in the world
+ */
 public class Location {
 
     private final int x, y;
@@ -31,6 +34,11 @@ public class Location {
         return Objects.hash(x, y);
     }
 
+    /**
+     * Create a new location distance away from the current location
+     * @param distance the distance from the current location
+     * @return the new location
+     */
     public Location createAway(int distance) {
         Random random = new Random();
 
