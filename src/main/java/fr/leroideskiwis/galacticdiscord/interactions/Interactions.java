@@ -12,11 +12,11 @@ public class Interactions {
 
     private List<Interaction> interactions = new ArrayList<>();
 
-    public void create(MessageReceivedEvent event, Interaction interaction){
+    public void create(GenericMessageEvent event, Interaction interaction){
         if(!anyApplicable(event)) this.interactions.add(interaction);
     }
 
-    public boolean anyApplicable(MessageReceivedEvent event){
+    public boolean anyApplicable(GenericMessageEvent event){
         return interactions.stream().anyMatch(interaction -> interaction.isApplicable(event));
     }
 
