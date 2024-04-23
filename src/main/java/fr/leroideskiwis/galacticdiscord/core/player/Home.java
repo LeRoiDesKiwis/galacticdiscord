@@ -1,11 +1,11 @@
 package fr.leroideskiwis.galacticdiscord.core.player;
 
+import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
 import fr.leroideskiwis.galacticdiscord.core.Location;
 import fr.leroideskiwis.galacticdiscord.core.WorldEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Represents the player's home
@@ -29,13 +29,11 @@ public class Home extends WorldEntity {
     }
 
     /**
-     * Get a list of the names of the buildings
-     * @return the list of the names of the buildings
+     * Show the buildings
+     * @param displayer the displayer
      */
-    public List<String> getBuildings(boolean details){
-        return buildings.stream()
-                .map(homeBuilding -> details ? homeBuilding.toStringWithDetails(player) : homeBuilding.toString())
-                .collect(Collectors.toList());
+    public void showBuildings(Displayer displayer){
+        buildings.forEach(building -> displayer.display(building.toString()));
     }
 
     /**

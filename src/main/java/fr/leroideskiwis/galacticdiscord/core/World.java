@@ -25,10 +25,14 @@ public class World {
      * @param radius the radius
      * @return the entities around the location
      */
-    public List<WorldEntity> viewAround(Location location, int radius){
+    public List<WorldEntity> getAround(Location location, int radius){
         return entities.stream()
                 .filter(viewable -> viewable.canBeViewedFrom(location, radius))
                 .collect(Collectors.toList());
+    }
+
+    public void viewAround(Displayer displayer, Location location, int radius){
+        getAround(location, radius).forEach(entity -> displayer.display(entity.toString()));
     }
 
 }

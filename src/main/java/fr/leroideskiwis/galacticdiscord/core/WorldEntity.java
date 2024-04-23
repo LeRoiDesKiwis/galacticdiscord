@@ -18,4 +18,9 @@ public abstract class WorldEntity implements Viewable {
     public boolean canBeViewedFrom(Location location, int viewPower) {
         return location.distance(this.location) <= viewPower;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s at %s", getClass().getSimpleName(), location);
+    }
 }
