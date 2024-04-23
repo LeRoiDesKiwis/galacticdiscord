@@ -1,6 +1,6 @@
-package fr.leroideskiwis.galacticdiscord.buildings;
+package fr.leroideskiwis.galacticdiscord.core.buildings;
 
-import fr.leroideskiwis.galacticdiscord.player.Player;
+import fr.leroideskiwis.galacticdiscord.core.player.Player;
 
 /**
  * Represents a building

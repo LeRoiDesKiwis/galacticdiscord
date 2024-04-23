@@ -1,11 +1,8 @@
-package fr.leroideskiwis.galacticdiscord.interactions;
+package fr.leroideskiwis.galacticdiscord.discord.interactions;
 
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.GenericMessageEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Interactions {

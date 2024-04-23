@@ -1,6 +1,6 @@
-package fr.leroideskiwis.galacticdiscord.player;
+package fr.leroideskiwis.galacticdiscord.core.player;
 
-import fr.leroideskiwis.galacticdiscord.buildings.Building;
+import fr.leroideskiwis.galacticdiscord.core.buildings.Building;
 import fr.leroideskiwis.galacticdiscord.utils.Utils;
 
 public abstract class HomeBuilding implements Building {

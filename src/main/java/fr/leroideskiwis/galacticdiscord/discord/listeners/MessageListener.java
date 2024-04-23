@@ -1,6 +1,9 @@
-package fr.leroideskiwis.galacticdiscord.listeners;
+package fr.leroideskiwis.galacticdiscord.discord.listeners;
 
-import fr.leroideskiwis.galacticdiscord.interactions.*;
+import fr.leroideskiwis.galacticdiscord.discord.interactions.Interactions;
+import fr.leroideskiwis.galacticdiscord.discord.interactions.MessageInteraction;
+import fr.leroideskiwis.galacticdiscord.discord.interactions.Operation;
+import fr.leroideskiwis.galacticdiscord.discord.interactions.ReactionInteraction;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;

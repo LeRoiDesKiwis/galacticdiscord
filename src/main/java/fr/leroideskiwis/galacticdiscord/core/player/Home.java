@@ -1,7 +1,7 @@
-package fr.leroideskiwis.galacticdiscord.player;
+package fr.leroideskiwis.galacticdiscord.core.player;
 
-import fr.leroideskiwis.galacticdiscord.Location;
-import fr.leroideskiwis.galacticdiscord.WorldEntity;
+import fr.leroideskiwis.galacticdiscord.core.Location;
+import fr.leroideskiwis.galacticdiscord.core.WorldEntity;
 
 import java.util.ArrayList;
 import java.util.List;

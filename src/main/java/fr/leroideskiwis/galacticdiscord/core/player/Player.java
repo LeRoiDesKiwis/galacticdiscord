@@ -1,9 +1,8 @@
-package fr.leroideskiwis.galacticdiscord.player;
+package fr.leroideskiwis.galacticdiscord.core.player;
 
 import fr.leroideskiwis.galacticdiscord.database.Database;
 import net.dv8tion.jda.api.entities.User;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

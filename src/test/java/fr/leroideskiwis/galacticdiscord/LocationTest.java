@@ -1,5 +1,6 @@
 package fr.leroideskiwis.galacticdiscord;
 
+import fr.leroideskiwis.galacticdiscord.core.Location;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

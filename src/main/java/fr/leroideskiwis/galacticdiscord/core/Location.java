@@ -1,4 +1,4 @@
-package fr.leroideskiwis.galacticdiscord;
+package fr.leroideskiwis.galacticdiscord.core;
 
 import java.util.Objects;
 import java.util.Random;

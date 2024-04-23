@@ -1,7 +1,7 @@
-package fr.leroideskiwis.galacticdiscord;
+package fr.leroideskiwis.galacticdiscord.core;
 
-import fr.leroideskiwis.galacticdiscord.player.Home;
-import fr.leroideskiwis.galacticdiscord.player.Player;
+import fr.leroideskiwis.galacticdiscord.core.player.Home;
+import fr.leroideskiwis.galacticdiscord.core.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package fr.leroideskiwis.galacticdiscord.interactions;
+package fr.leroideskiwis.galacticdiscord.discord.interactions;
 
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;

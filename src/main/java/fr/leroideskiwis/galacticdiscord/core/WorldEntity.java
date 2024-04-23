@@ -1,4 +1,4 @@
-package fr.leroideskiwis.galacticdiscord;
+package fr.leroideskiwis.galacticdiscord.core;
 
 public abstract class WorldEntity implements Viewable {
 
