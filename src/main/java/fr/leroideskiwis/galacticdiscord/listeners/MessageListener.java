@@ -3,6 +3,7 @@ package fr.leroideskiwis.galacticdiscord.listeners;
 import fr.leroideskiwis.galacticdiscord.interactions.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class MessageListener extends ListenerAdapter {
@@ -30,6 +31,25 @@ public class MessageListener extends ListenerAdapter {
                         return Operation.IGNORED;
                     })
                     .build());
+        }  else if(message.equals("test2")){
+            interactions.create(event, new ReactionInteraction.ReactionInteractionBuilder()
+                    .user(event.getAuthor())
+                    .textChannel(event.getChannel().asTextChannel())
+                    .addEmote("✅").addEmote("❌")
+                    .function(event1 -> {
+                        event1.getChannel().sendMessage("Tu as réagit avec "+event1.getEmoji()).queue();
+                        if(Math.random() > 0.8){
+                            event1.getChannel().sendMessage("C'est finit !").queue();
+                            return Operation.COMPLETED;
+                        }
+                        return Operation.IGNORED;
+                    })
+                    .build(event.getMessage()));
         } else interactions.apply(event);
+    }
+
+    @Override
+    public void onMessageReactionAdd(MessageReactionAddEvent event) {
+        interactions.apply(event);
     }
 }
