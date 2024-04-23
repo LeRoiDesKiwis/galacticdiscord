@@ -1,6 +1,7 @@
 package fr.leroideskiwis.galacticdiscord.interactions;
 
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Interactions {
         return interactions.stream().anyMatch(interaction -> interaction.isApplicable(event));
     }
 
-    public void apply(MessageReceivedEvent event){
+    public void apply(GenericMessageEvent event){
         interactions.removeIf(interaction -> interaction.isApplicable(event) && interaction.execute(event) == Operation.COMPLETED);
     }
 
