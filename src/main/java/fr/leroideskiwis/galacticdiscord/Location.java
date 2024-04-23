@@ -1,6 +1,9 @@
 package fr.leroideskiwis.galacticdiscord;
 
+import fr.leroideskiwis.galacticdiscord.player.Home;
+
 import java.util.Objects;
+import java.util.Random;
 
 public class Location {
 
@@ -26,5 +29,16 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public Location createAway(int distance) {
+        Random random = new Random();
+
+        double angle = random.nextDouble() * 2 * Math.PI;
+
+        int newX = (int)(x + distance * Math.cos(angle));
+        int newY = (int)(y + distance * Math.sin(angle));
+
+        return new Location(newX, newY);
     }
 }
