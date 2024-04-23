@@ -2,6 +2,7 @@ package fr.leroideskiwis.galacticdiscord.core;
 
 import fr.leroideskiwis.galacticdiscord.core.player.Home;
 import fr.leroideskiwis.galacticdiscord.core.player.Player;
+import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +12,16 @@ public class World {
 
     private final List<WorldEntity> entities = new ArrayList<>();
 
+    public void addEntity(WorldEntity entity){
+        entities.add(entity);
+    }
+
     public void createHome(Player player){
-        entities.add(new Home(new Location(0, 0), player));
+        addEntity(new Home(new Location(0, 0), player));
     }
 
     public void createHomeFrom(Player player){
-        entities.add(player.createHomeFrom(player));
+        addEntity(player.createHomeFrom(player));
     }
 
     /**

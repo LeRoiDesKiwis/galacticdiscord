@@ -20,7 +20,7 @@ public abstract class HomeBuilding implements Building {
 
     @Override
     public String toString() {
-        return Utils.toFirstLetterLowerCase(getClass().getSimpleName());
+        return getClass().getSimpleName();
     }
 
     /**
