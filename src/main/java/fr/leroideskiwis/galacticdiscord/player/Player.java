@@ -13,10 +13,12 @@ public class Player {
     private int xp;
     private int money;
     private Inventory inventory;
-    private User user;
+    private final User user;
+    private final Home home;
 
-    public Player(User user){
+    public Player(User user, Home home){
         this.user = user;
+        this.home = home;
     }
 
     public void load(Database database) throws SQLException {
@@ -43,5 +45,9 @@ public class Player {
 
         preparedStatement.execute();
         preparedStatement.close();
+    }
+
+    public Home createHomeFrom(Player player) {
+        return home.createNewHomeFromHere(player);
     }
 }
