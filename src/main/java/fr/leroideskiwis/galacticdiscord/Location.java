@@ -1,7 +1,5 @@
 package fr.leroideskiwis.galacticdiscord;
 
-import fr.leroideskiwis.galacticdiscord.player.Home;
-
 import java.util.Objects;
 import java.util.Random;
 
@@ -18,7 +16,7 @@ public class Location {
     }
 
     public String toString(){
-        return String.format("%d;%d", x, y);
+        return String.format("[%d;%d]", x, y);
     }
 
     @Override
@@ -40,13 +38,18 @@ public class Location {
      * @return the new location
      */
     public Location createAway(int distance) {
+        if(distance < 0) throw new IllegalArgumentException("Distance must be positive");
         Random random = new Random();
 
         double angle = random.nextDouble() * 2 * Math.PI;
 
-        int newX = (int)(x + distance * Math.cos(angle));
-        int newY = (int)(y + distance * Math.sin(angle));
+        int newX = (int)(x + (distance+1) * Math.cos(angle));
+        int newY = (int)(y + (distance+1) * Math.sin(angle));
 
         return new Location(newX, newY);
+    }
+
+    public double distance(Location location) {
+        return Math.sqrt(Math.pow(x - location.x, 2) + Math.pow(y - location.y, 2));
     }
 }
