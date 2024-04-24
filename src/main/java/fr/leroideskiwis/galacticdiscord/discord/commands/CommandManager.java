@@ -15,6 +15,7 @@ public class CommandManager {
     private final Map<String, Command> commands = new HashMap<>();
     //Initialize CommandManager with all of our commands
     public CommandManager(){
+        commands.put("help", new HelpCommand(this));
     }
 
     public Stream<Map.Entry<String, Command>> stream(){
@@ -32,7 +33,7 @@ public class CommandManager {
         if(input.isBlank()) return false;
         String[] split = input.split(" ");
         String commandName = split[0].toLowerCase();
-        List<String> possibleCommands = getCommand(commandName);
+        List<String> possibleCommands = getCommands(commandName).stream().map(Map.Entry::getKey).toList();
         switch (possibleCommands.size()) {
             case 0 -> {
                 displayer.display(String.format("Command %s not found !\n", commandName));
@@ -54,13 +55,8 @@ public class CommandManager {
         }
     }
 
-    /**
-     * return a list of commands starting with a name
-     * @param name the name
-     * @return the list of commands
-     */
-    public List<String> getCommand(String name){
-        return commands.keySet().stream().filter(command -> command.startsWith(name)).collect(Collectors.toList());
+    public List<Map.Entry<String, Command>> getCommands(String name){
+        return stream().filter(entry -> entry.getKey().startsWith(name)).toList();
     }
 
 }

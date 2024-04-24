@@ -23,6 +23,15 @@ public abstract class Command {
     }
 
     /**
+     * Check if the user has the permission to execute the command
+     * @param event the event
+     * @return true if the user has the permission
+     */
+    public boolean hasPermission(MessageReceivedEvent event){
+        return true;
+    }
+
+    /**
      * Execute the command
      * @param args list of command argument, without the command name
      * @return true if the command was executed successfully
