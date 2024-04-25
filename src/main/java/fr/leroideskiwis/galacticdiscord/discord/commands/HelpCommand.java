@@ -2,13 +2,10 @@ package fr.leroideskiwis.galacticdiscord.discord.commands;
 
 import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelAccumulatorDisplayer;
 import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelDisplayer;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class HelpCommand implements Command {
 
@@ -74,6 +71,14 @@ public class HelpCommand implements Command {
 
         ChannelDisplayer displayer = new ChannelAccumulatorDisplayer(event.getChannel());
         if(commands.isEmpty()) displayer.display("Command not found !");
+        else {
+            StringBuilder builder = new StringBuilder("NOTE: in usage, ");
+            for (CommandArgument.ArgumentType argumentType : CommandArgument.ArgumentType.values()) {
+                builder.append(argumentType.start).append(argumentType.end).append(" = ").append(argumentType.toString().toLowerCase()).append(", ");
+            }
+            displayer.display(builder.append("\n").toString());
+        }
+
         commands.forEach(entry -> displayer.display(formatCommand(event, entry.getKey(), entry.getValue())));
         displayer.send();
         return !commands.isEmpty();
