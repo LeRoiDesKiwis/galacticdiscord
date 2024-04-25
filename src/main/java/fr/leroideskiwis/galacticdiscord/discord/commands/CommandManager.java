@@ -1,5 +1,7 @@
 package fr.leroideskiwis.galacticdiscord.discord.commands;
 
+import fr.leroideskiwis.galacticdiscord.discord.commands.home.HomeAddCommand;
+import fr.leroideskiwis.galacticdiscord.discord.commands.home.HomeInfoCommand;
 import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelDisplayer;
 import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -7,7 +9,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 //Definition of our CommandManager class
 public class CommandManager {
@@ -16,6 +17,8 @@ public class CommandManager {
     //Initialize CommandManager with all of our commands
     public CommandManager(){
         commands.put("help", new HelpCommand(this));
+        commands.put("homeadd", new HomeAddCommand());
+        commands.put("homeinfo", new HomeInfoCommand());
     }
 
     public Stream<Map.Entry<String, Command>> stream(){
