@@ -37,7 +37,7 @@ public class HelpCommand implements Command {
 
     private String formatExample(Command command) {
         if(command.example().isBlank()) return "";
-        return "\t- EXAMPLE: "+command.example();
+        return "\t- EXAMPLE: "+command.example()+"\n";
     }
     //Print command name and arguments
     private String formatUsage(String commandName, Command command){
@@ -47,7 +47,7 @@ public class HelpCommand implements Command {
             stringBuilder.append(argument).append(" ");
         }
         stringBuilder.deleteCharAt(stringBuilder.length()-1);
-        return "\t- USAGE: " + commandName + " " + stringBuilder;
+        return "\t- USAGE: " + commandName + " " + stringBuilder.append("\n");
     }
 
     private String strikeIfNoPermission(Command command, MessageReceivedEvent event, String string){
@@ -58,8 +58,8 @@ public class HelpCommand implements Command {
     private String formatCommand(MessageReceivedEvent event, String commandName, Command command){
         StringBuilder builder = new StringBuilder();
         builder.append("- ").append(commandName).append(": ").append(command.description()).append("\n");
-        builder.append(formatUsage(commandName, command)).append("\n");
-        builder.append(formatExample(command)).append("\n");
+        builder.append(formatUsage(commandName, command));
+        builder.append(formatExample(command));
         return strikeIfNoPermission(command, event, builder.toString());
     }
 
