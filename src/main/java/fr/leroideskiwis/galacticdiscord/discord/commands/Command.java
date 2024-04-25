@@ -2,39 +2,26 @@ package fr.leroideskiwis.galacticdiscord.discord.commands;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.List;
+
 //Description of our abstract Command class, with a command description, a command argument and an example
-public abstract class Command {
-    protected final String description;
-    protected final CommandArgument[] arguments;
-    protected String example;
-    //Command constructor with example and arguments
-    public Command(String description, String example, CommandArgument... arguments) {
-        this.description = description;
-        this.arguments = arguments;
-        this.example = example;
-    }
-    //Command constructor with arguments
-    public Command(String description, CommandArgument... arguments){
-        this(description, "", arguments);
-    }
-    //Command constructor with only description
-    public Command(String description){
-        this(description, "");
-    }
+public interface Command {
+
+    String description();
+    List<CommandArgument> arguments();
+    String example();
 
     /**
      * Check if the user has the permission to execute the command
      * @param event the event
      * @return true if the user has the permission
      */
-    public boolean hasPermission(MessageReceivedEvent event){
-        return true;
-    }
+    boolean hasPermission(MessageReceivedEvent event);
 
     /**
      * Execute the command
      * @param args list of command argument, without the command name
      * @return true if the command was executed successfully
      */
-    public abstract boolean execute(MessageReceivedEvent event, String[] args);
+    boolean execute(MessageReceivedEvent event, String[] args);
 }

@@ -10,24 +10,43 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class HelpCommand extends Command {
+public class HelpCommand implements Command {
 
     private CommandManager commandManager;
 
     public HelpCommand(CommandManager commandManager) {
-        super("Display the help message", "help", new CommandArgument("command", CommandArgument.ArgumentType.OPTIONAL));
         this.commandManager = commandManager;
     }
 
+    @Override
+    public String description() {
+        return "Display the help message";
+    }
+
+    @Override
+    public List<CommandArgument> arguments() {
+        return List.of(new CommandArgument("command", CommandArgument.ArgumentType.OPTIONAL));
+    }
+
+    @Override
+    public String example() {
+        return "";
+    }
+
+    @Override
+    public boolean hasPermission(MessageReceivedEvent event) {
+        return true;
+    }
+
     private String formatExample(Command command) {
-        if(command.example.isBlank()) return "";
-        return "\t- EXAMPLE: "+command.example;
+        if(command.example().isBlank()) return "";
+        return "\t- EXAMPLE: "+command.example();
     }
     //Print command name and arguments
     private String formatUsage(String commandName, Command command){
-        if(command.arguments.length == 0) return "";
+        if(command.arguments().isEmpty()) return "";
         StringBuilder stringBuilder = new StringBuilder();
-        for (CommandArgument argument : command.arguments) {
+        for (CommandArgument argument : command.arguments()) {
             stringBuilder.append(argument).append(" ");
         }
         stringBuilder.deleteCharAt(stringBuilder.length()-1);
@@ -41,7 +60,7 @@ public class HelpCommand extends Command {
     //Print description of CommandHelp
     private String formatCommand(MessageReceivedEvent event, String commandName, Command command){
         StringBuilder builder = new StringBuilder();
-        builder.append("- ").append(commandName).append(": ").append(command.description).append("\n");
+        builder.append("- ").append(commandName).append(": ").append(command.description()).append("\n");
         builder.append(formatUsage(commandName, command)).append("\n");
         builder.append(formatExample(command)).append("\n");
         return strikeIfNoPermission(command, event, builder.toString());
@@ -57,6 +76,7 @@ public class HelpCommand extends Command {
         if(commands.isEmpty()) displayer.display("Command not found !");
         commands.forEach(entry -> displayer.display(formatCommand(event, entry.getKey(), entry.getValue())));
         displayer.send();
-        return true;
+        return !commands.isEmpty();
     }
+
 }
