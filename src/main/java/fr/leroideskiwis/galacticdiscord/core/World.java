@@ -2,7 +2,7 @@ package fr.leroideskiwis.galacticdiscord.core;
 
 import fr.leroideskiwis.galacticdiscord.core.player.Home;
 import fr.leroideskiwis.galacticdiscord.core.player.Player;
-import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.Messenger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +36,8 @@ public class World {
                 .collect(Collectors.toList());
     }
 
-    public void viewAround(Displayer displayer, Location location, int radius){
-        getAround(location, radius).forEach(entity -> displayer.display(entity.toString()));
+    public void viewAround(Messenger messenger, Location location, int radius){
+        getAround(location, radius).forEach(entity -> messenger.sendMessage(entity.toString()));
     }
 
 }

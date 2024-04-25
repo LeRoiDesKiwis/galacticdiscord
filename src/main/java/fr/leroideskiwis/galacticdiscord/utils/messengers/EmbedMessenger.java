@@ -1,17 +1,15 @@
-package fr.leroideskiwis.galacticdiscord.utils.displayers;
+package fr.leroideskiwis.galacticdiscord.utils.messengers;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
-import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 
 import java.awt.*;
 
-public class EmbedDisplayer extends ChannelDisplayer{
+public class EmbedMessenger extends ChannelMessenger {
 
     private EmbedBuilder builder;
 
-    public EmbedDisplayer(MessageChannel channel, String title, Color color) {
+    public EmbedMessenger(MessageChannel channel, String title, Color color) {
         super(channel);
         this.builder = new EmbedBuilder().setTitle(title).setColor(color);
     }

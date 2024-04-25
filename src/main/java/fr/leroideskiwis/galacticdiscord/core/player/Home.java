@@ -1,6 +1,6 @@
 package fr.leroideskiwis.galacticdiscord.core.player;
 
-import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.Messenger;
 import fr.leroideskiwis.galacticdiscord.core.Location;
 import fr.leroideskiwis.galacticdiscord.core.WorldEntity;
 
@@ -30,10 +30,10 @@ public class Home extends WorldEntity {
 
     /**
      * Show the buildings
-     * @param displayer the displayer
+     * @param messenger the messenger
      */
-    public void showBuildings(Displayer displayer){
-        buildings.forEach(building -> displayer.display(building.toString()));
+    public void showBuildings(Messenger messenger){
+        buildings.forEach(building -> messenger.sendMessage(building.toString()));
     }
 
     /**

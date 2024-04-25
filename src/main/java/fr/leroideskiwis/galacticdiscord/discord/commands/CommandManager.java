@@ -2,8 +2,8 @@ package fr.leroideskiwis.galacticdiscord.discord.commands;
 
 import fr.leroideskiwis.galacticdiscord.discord.commands.home.HomeAddCommand;
 import fr.leroideskiwis.galacticdiscord.discord.commands.home.HomeInfoCommand;
-import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelDisplayer;
-import fr.leroideskiwis.galacticdiscord.utils.displayers.Displayer;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.ChannelMessenger;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.Messenger;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class CommandManager {
      * @return true if the command was executed successfully
      */
     public boolean execute(MessageReceivedEvent event, String input){
-        Displayer displayer = new ChannelDisplayer(event.getChannel());
+        Messenger messenger = new ChannelMessenger(event.getChannel());
         if(input.isBlank()) return false;
         String[] split = input.split(" ");
         String commandName = split[0].toLowerCase();
@@ -53,7 +53,7 @@ public class CommandManager {
                 System.out.println("Commands starting with \"" + commandName + "\":");
                 StringBuilder stringBuilder = new StringBuilder();
                 possibleCommands.forEach(string -> stringBuilder.append("- ").append(string).append("\n"));
-                displayer.display(stringBuilder.toString());
+                messenger.sendMessage(stringBuilder.toString());
                 return true;
             }
         }

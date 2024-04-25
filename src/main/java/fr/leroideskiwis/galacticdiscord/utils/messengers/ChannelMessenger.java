@@ -1,17 +1,17 @@
-package fr.leroideskiwis.galacticdiscord.utils.displayers;
+package fr.leroideskiwis.galacticdiscord.utils.messengers;
 
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
-public class ChannelDisplayer implements Displayer{
+public class ChannelMessenger implements Messenger {
 
     protected MessageChannel channel;
 
-    public ChannelDisplayer(MessageChannel channel){
+    public ChannelMessenger(MessageChannel channel){
         this.channel = channel;
     }
 
     @Override
-    public void display(String message) {
+    public void sendMessage(String message) {
         channel.sendMessage(message).queue();
     }
 

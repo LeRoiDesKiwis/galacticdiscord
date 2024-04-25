@@ -1,11 +1,11 @@
-package fr.leroideskiwis.galacticdiscord.utils.displayers;
+package fr.leroideskiwis.galacticdiscord.utils.messengers;
 
-public class StringDisplayer implements Displayer{
+public class StringMessenger implements Messenger {
 
     private StringBuilder stringBuilder = new StringBuilder();
 
     @Override
-    public void display(String message) {
+    public void sendMessage(String message) {
         stringBuilder.append(message).append("\n");
     }
 

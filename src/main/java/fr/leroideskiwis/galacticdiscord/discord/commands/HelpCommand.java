@@ -1,7 +1,7 @@
 package fr.leroideskiwis.galacticdiscord.discord.commands;
 
-import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelAccumulatorDisplayer;
-import fr.leroideskiwis.galacticdiscord.utils.displayers.ChannelDisplayer;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.ChannelAccumulatorMessenger;
+import fr.leroideskiwis.galacticdiscord.utils.messengers.ChannelMessenger;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.List;
@@ -69,18 +69,18 @@ public class HelpCommand implements Command {
                 ? commandManager.stream().toList()
                 : commandManager.getCommands(args[0]);
 
-        ChannelDisplayer displayer = new ChannelAccumulatorDisplayer(event.getChannel());
-        if(commands.isEmpty()) displayer.display("Command not found !");
+        ChannelMessenger messenger = new ChannelAccumulatorMessenger(event.getChannel());
+        if(commands.isEmpty()) messenger.sendMessage("Command not found !");
         else {
             StringBuilder builder = new StringBuilder("NOTE: in usage, ");
             for (CommandArgument.ArgumentType argumentType : CommandArgument.ArgumentType.values()) {
                 builder.append(argumentType.start).append(argumentType.end).append(" = ").append(argumentType.toString().toLowerCase()).append(", ");
             }
-            displayer.display(builder.append("\n").toString());
+            messenger.sendMessage(builder.append("\n").toString());
         }
 
-        commands.forEach(entry -> displayer.display(formatCommand(event, entry.getKey(), entry.getValue())));
-        displayer.send();
+        commands.forEach(entry -> messenger.sendMessage(formatCommand(event, entry.getKey(), entry.getValue())));
+        messenger.send();
         return !commands.isEmpty();
     }
 
