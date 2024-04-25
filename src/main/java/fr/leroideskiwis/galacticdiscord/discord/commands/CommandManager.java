@@ -33,7 +33,9 @@ public class CommandManager {
         if(input.isBlank()) return false;
         String[] split = input.split(" ");
         String commandName = split[0].toLowerCase();
-        List<String> possibleCommands = getCommands(commandName).stream().map(Map.Entry::getKey).toList();
+        List<String> possibleCommands = getCommands(commandName).stream()
+                .filter(command -> command.getValue().hasPermission(event))
+                .map(Map.Entry::getKey).toList();
         switch (possibleCommands.size()) {
             case 0 -> {
                 return false;
