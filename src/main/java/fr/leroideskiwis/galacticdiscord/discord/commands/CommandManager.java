@@ -36,7 +36,6 @@ public class CommandManager {
         List<String> possibleCommands = getCommands(commandName).stream().map(Map.Entry::getKey).toList();
         switch (possibleCommands.size()) {
             case 0 -> {
-                displayer.display(String.format("Command %s not found !\n", commandName));
                 return false;
             }
             case 1 -> {
