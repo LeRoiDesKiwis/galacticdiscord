@@ -9,7 +9,11 @@ public class CommandArgument {
         this.title = title;
         this.type = type;
     }
-    //CommandArgument constructor, if not specified every argument is required
+
+    /**
+     * By default, ArgumentType is REQUIRED
+     * @param title Argument's title
+     */
     public CommandArgument(String title){
         this(title, ArgumentType.REQUIRED);
     }
