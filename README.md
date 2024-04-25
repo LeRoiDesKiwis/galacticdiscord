@@ -1,3 +1,3 @@
 # galacticdiscord
 
-Contrainte imposé : le backend ne doit pas dépendre du frontend
+Contrainte : éviter de faire dépendre le backend du frontend
