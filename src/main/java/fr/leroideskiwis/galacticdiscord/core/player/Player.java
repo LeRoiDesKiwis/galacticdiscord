@@ -1,5 +1,6 @@
 package fr.leroideskiwis.galacticdiscord.core.player;
 
+import fr.leroideskiwis.galacticdiscord.core.Location;
 import fr.leroideskiwis.galacticdiscord.database.Database;
 import net.dv8tion.jda.api.entities.User;
 
@@ -18,6 +19,11 @@ public class Player {
     public Player(User user, Home home){
         this.user = user;
         this.home = home;
+    }
+
+    public Player(User user, Location location) {
+        this.user = user;
+        this.home = new Home(location, this);
     }
 
     public void load(Database database) throws SQLException {
@@ -48,5 +54,9 @@ public class Player {
 
     public Home createHomeFrom(Player player) {
         return home.createNewHomeFromHere(player);
+    }
+
+    public boolean isUser(User user) {
+        return user.equals(this.user);
     }
 }
